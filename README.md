@@ -114,12 +114,12 @@ Update the scripts section of the `package.json`:
 
 ```javascript
 "scripts": {
-        "prestart": "node ./buildScripts/startMessage.js",
-        "start": "npm-run-all --parallel start-server",
-        "start-server": "node ./buildScripts/srcServer.js",
-        "share": "npm-run-all --parallel start-server localtunnel",
-        "localtunnel": "lt --port 3000"
-    },
+    "prestart": "node ./buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel start-server",
+    "start-server": "node ./buildScripts/srcServer.js",
+    "share": "npm-run-all --parallel start-server localtunnel",
+    "localtunnel": "lt --port 3000"
+},
 ```
 
 NOTE: To suppress the noise made by `npm start` use `npm start -s`
