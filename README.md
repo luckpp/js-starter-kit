@@ -36,3 +36,11 @@ NOTE:
 *** in the current project use the packages from: https://gist.github.com/coryhouse/29bd1029b623beb4c7f79b748dcba844
 
 
+### 3. Choose a Web Server
+
+`express` is the web application framework for Node.js that can be used both in in development and in production.
+
+Alternatives for `express` that can be used only in development are:
+- `koa` and `hapi`
+- `webpack` (serves from memory, hot reloading)
+- `Browsersync` (dedicated IP for sharing work on LAN, all interactions remain in sync -> you can hit the same IP on multiple devices and all devices will remain in sync, great for cross-device testing, integrates with Webpack/Browserify/Gulp)
