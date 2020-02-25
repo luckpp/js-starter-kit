@@ -1,4 +1,5 @@
 # JavaScript Starter Kit
+
 Starter kit that includes all tools required by a JS project.
 
 ## Steps required when starting a new project
@@ -30,11 +31,7 @@ NOTE:
 - in order to manage multiple version of Node.js one can use the `nvm` tool (Node Version Manager).
 - the 'npm' has buil in  security scanning; one should use the following commands: `npm audit` and `npm audit fix`
 
-
-
-
 *** in the current project use the packages from: https://gist.github.com/coryhouse/29bd1029b623beb4c7f79b748dcba844
-
 
 ### 3. Choose a Web Server
 
@@ -75,5 +72,54 @@ In order to share the work-in-progress there are several alternatives
 
 NOTE: I prefere to use `localtunnel` due to easy setup.
 
+### 4. Automation
 
+The most popular options for JavaScript automation are:
+1. Grunt
+    - the first popular JavaScript task runner
+    - configured over a Grunt file (a JSON that configures Grunt to work with your plug-ins)
+    - writes intermediary files between steps
+    - large plugin ecosystem
+    * may people have moved to more modern task runners like Gulp
+2. Gulp
+    - focuses on in-memory streams (pipes) - so you don't have to write to disk like with Grunt
+    - fast
+    - configured over a Gulp (it is `code based` rather than `configuration based like in Grunt`) -> so you write actual JavaScript code in your Gulp tasks so you have more declarative power
+    - large plugin ecosystem
+    * although Gulp ia a great tool you can move on to just unsing `npm scripts`
+3. npm scripts
+    - declared in the `scripts` section of the `package.json`
+    - with `npm scripts` you can leverage your OS command line
+    - directly use npm packages (useful to write cross-platform npm scripts)
+    - call separate Node scripts when a command line becomes too complicated
+    - offers convention-based pre/post hooks (to run other scripts before and after your script)
+    - you can use all the tools/packages available on `npm` package manager
 
+The benefits of `npm scripts`:
+- use the tool directly
+- no need for separate plugins (eg. in Gulp you should have `Gulp config`, `Gulp-eslint` in order to use `ESLint`)
+- simpler debugging
+- better docs
+- easy to learn
+- allows to make command line calls
+- use npm packages
+- call separate scripts that use Node.js
+
+NOTE: Packages called from npm scripts do not need to be installed globally.
+
+#### 4.1 Run scripts in parallel
+
+Use npm package `npm-run-all` (https://www.npmjs.com/package/npm-run-all).
+Update the scripts section of the `package.json`:
+
+```javascript
+"scripts": {
+        "prestart": "node ./buildScripts/startMessage.js",
+        "start": "npm-run-all --parallel start-server",
+        "start-server": "node ./buildScripts/srcServer.js",
+        "share": "npm-run-all --parallel start-server localtunnel",
+        "localtunnel": "lt --port 3000"
+    },
+```
+
+NOTE: To suppress the noise made by `npm start` use `npm start -s`

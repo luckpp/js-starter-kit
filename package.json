@@ -4,8 +4,11 @@
     "description": "Starter kit that includes all tools required by a JS project.",
     "main": "index.js",
     "scripts": {
-        "start": "node ./buildScripts/srcServer.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prestart": "node ./buildScripts/startMessage.js",
+        "start": "npm-run-all --parallel start-server",
+        "start-server": "node ./buildScripts/srcServer.js",
+        "share": "npm-run-all start-server localtunnel",
+        "localtunnel": "lt --port 3000"
     },
     "repository": {
         "type": "git",
@@ -18,8 +21,12 @@
     },
     "homepage": "https://github.com/luckpp/js-starter-kit#readme",
     "dependencies": {
+        "chalk": "^3.0.0",
         "express": "^4.17.1",
         "open": "^7.0.2"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "localtunnel": "^2.0.0",
+        "npm-run-all": "^4.1.5"
+    }
 }
