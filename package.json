@@ -1,23 +1,25 @@
 {
-  "name": "js-starter-kit",
-  "version": "1.0.0",
-  "description": "Starter kit that includes all tools required by a JS project.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luckpp/js-starter-kit.git"
-  },
-  "author": "luckpp",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/luckpp/js-starter-kit/issues"
-  },
-  "homepage": "https://github.com/luckpp/js-starter-kit#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "open": "^7.0.2"
-  }
+    "name": "js-starter-kit",
+    "version": "1.0.0",
+    "description": "Starter kit that includes all tools required by a JS project.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./buildScripts/srcServer.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/luckpp/js-starter-kit.git"
+    },
+    "author": "luckpp",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/luckpp/js-starter-kit/issues"
+    },
+    "homepage": "https://github.com/luckpp/js-starter-kit#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "open": "^7.0.2"
+    },
+    "devDependencies": {}
 }

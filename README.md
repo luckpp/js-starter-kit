@@ -43,4 +43,37 @@ NOTE:
 Alternatives for `express` that can be used only in development are:
 - `koa` and `hapi`
 - `webpack` (serves from memory, hot reloading)
-- `Browsersync` (dedicated IP for sharing work on LAN, all interactions remain in sync -> you can hit the same IP on multiple devices and all devices will remain in sync, great for cross-device testing, integrates with Webpack/Browserify/Gulp)
+- `Browsersync` (dedicated IP for sharing work on LAN, all interactions remain in sync -> you can hit the same IP on multiple devices and all devices will remain in sync, great for cross-device testing, integrates with Webpack/Browserify/Gulp/Express)
+
+
+#### 3.1 Share the work-in-progress
+
+In order to share the work-in-progress there are several alternatives
+1. Classical cloud providers: Google, AWS, Azure
+2. Lightweight alternatives:
+    - localtunnel (https://www.npmjs.com/package/localtunnel) - creates a tunnel to your local machine
+        1. `npm i -g localtunnel`
+        2. start your app
+        3. `lt --port 3000` (exposes the app running on port 3000)
+        - esiest setup / ultra-versatile
+    - ngrok (https://www.npmjs.com/package/ngrok) - creates a secure tunnel to your local machine
+        1. sign up
+        2. install ngrok
+        3. insatll authtoken
+        4. start your app
+        5. `./ngrok http 80` (specify the port you want to use)
+        - easy setup / secure
+    - now (https://www.npmjs.com/package/now) - quckly deploy Node.js to the cloud; any directory that contains a `package.json` can be uploaded to the cloud using one command.
+        1. `npm i -g now`
+        2. create start script that opens the preffered web server (eg. `express`)
+        3. `now`
+        - no firewall hole / supports Node.js projects / !!! publishing the the actual files to a public web server !!!
+    - surge (https://www.npmjs.com/package/surge) - quickly hosts static files to public URL
+        1. `npm i -g surge`
+        2. `surge` (in the prject directory)
+        - no firewall hole / !!! publishing the the actual files to a public web server !!!
+
+NOTE: I prefere to use `localtunnel` due to easy setup.
+
+
+
