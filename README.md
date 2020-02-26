@@ -123,3 +123,18 @@ Update the scripts section of the `package.json`:
 ```
 
 NOTE: To suppress the noise made by `npm start` use `npm start -s`
+
+### 4. Transpiling
+
+Transpiler is a type of translator that takes the source code of a program written in a programming language as its input and produces an equivalent source code in the same or a different programming language.
+
+One significant option is:
+- TypeScript (superset of JS)
+
+Other options were:
+- Babel (used to transpile the ;atest versions of JS down to ES5) -> at the moment the support for latest JS version added by Chrome, Node.js, Electron is greater than the one offered by Babel
+- Elm (is a purely functional programming language, and is developed with emphasis on usability, performance, and robustness)
+
+To see the ECMAScript compatibility table check: https://kangax.github.io/compat-table/es6/
+
+NOTE: I prefere to not use a transpiler since you depend on an additional tool and you can not leverage all the packages which are most likely available sa JS packages.
