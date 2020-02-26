@@ -107,7 +107,7 @@ The benefits of `npm scripts`:
 
 NOTE: Packages called from npm scripts do not need to be installed globally.
 
-#### 4.1 Run scripts in parallel
+#### 4.1. Run scripts in parallel
 
 Use npm package `npm-run-all` (https://www.npmjs.com/package/npm-run-all).
 Update the scripts section of the `package.json`:
@@ -119,7 +119,7 @@ Update the scripts section of the `package.json`:
     "start-server": "node ./buildScripts/srcServer.js",
     "share": "npm-run-all --parallel start-server localtunnel",
     "localtunnel": "lt --port 3000"
-},
+}
 ```
 
 NOTE: To suppress the noise made by `npm start` use `npm start -s`
@@ -138,3 +138,33 @@ Other options were:
 To see the ECMAScript compatibility table check: https://kangax.github.io/compat-table/es6/
 
 NOTE: I prefere to not use a transpiler since you depend on an additional tool and you can not leverage all the packages which are most likely available sa JS packages.
+
+
+### 5. Bundling
+
+JavaScript code needs to be bundled up for usage.
+
+`npm` packages use CommonJS pattern:
+- Node.js can handle this
+- browser do not understand it => one should bundle the `npm` packages into a format that the browsers can consume.
+
+NOTE: **bundlers are not just for apps that run into the browser -> one can use a bundler to:**
+- **package any JavaScript code into a single file**
+- **strategically bundle JavaScript code into separate files for different parts of the app (eg the app has 5 pages => create a bundle for each page)**
+
+#### 5.1. Modules format
+
+In the present there 2 formats for defining a module:
+- CommonJS: `const jQuery = require('jQuery')`
+- ES6 Module: `import jQuery from 'jQuery'` -> a standard based way of encapsulating the code (more details for Node.js on https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)
+
+Beneffits of of ES6 Modules:
+- standardized
+- staically analyzable
+    - imporoved autocomplete
+    - intelligent refactoring
+    - fails fast (not at runtime)
+    - tree shaking (elimination of dead code)
+- easy to read
+    - you can used named imports
+    - default exports (to specify how others can use your module)
