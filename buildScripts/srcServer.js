@@ -1,9 +1,11 @@
-var express = require('express');
-var path = require('path');
-var open = require('open');
+const express = require('express');
+const path = require('path');
+const open = require('open');
 
-var port = 3000;
-var app = express();
+const port = 3000;
+const app = express();
+
+/* eslint-disable no-console */
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../src/index.html'));
