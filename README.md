@@ -389,3 +389,48 @@ In order to make sure that tests are re-run each time you hit save add the **tes
 ```
 
 #### 7.2. Continuous Integration
+
+When your team commits code, it is important to confirm immediately that the commit works as expected on another machine (this is the resposibiliry of the Continuous Integration Server - CI Server).
+
+Why CI?
+- forgot to commit a new file
+- forgot to update package.json
+- commit doesn't work cross-platform
+- node version conflicts
+- bad merge
+- didn't run tests
+
+What does a CI Server do?
+- run automated build (the moment you commit)
+- run your tests
+- check code coverage
+- automate deploy
+
+**CI Servers that work great for JavaScript apps**:
+- **Travis** (https://travis-ci.org/ or https://travis-ci.com/)
+    - is a Linux-based CI server
+- **Appveyor** (https://www.appveyor.com/)
+    - is a Windows-based CI server
+- **Jenkins** (https://jenkins.io/)
+    - a popular, highly-configurable option
+- CircleCI (https://circleci.com/)
+- Semaphore (https://semaphoreci.com/)
+
+NOTE:
+- Travis and Jenkisn are the most popular CIs
+- Travis is a hosted solution
+- Jenkins is a good choice if you prefere to host your CI server
+- Appveyor is notable because of its Windows support
+
+
+##### 7.2.1 Travis CI
+
+- go to https://travis-ci.com/
+- sign-in with your github account
+- give access to the desired github repositories
+- in the root of yur project/repository add a **Travis** configuration file called `.travis.yml`:
+```yml
+language: node_js
+node_js:
+  - "12"
+```
