@@ -168,3 +168,76 @@ Beneffits of of ES6 Modules:
 - easy to read
     - you can used named imports
     - default exports (to specify how others can use your module)
+
+**Conclusion**: Bundlers take all your JavaScript files and intelligently package them for a target environment (such as browser ore Node.js). After packaging, the bundlers can also add some new feature on top of the bundle (eg. code minification).
+
+Bundlers:
+
+1. Browserify
+    - the first bundler to reach mass adoption
+    - bundles `npm packages` for the web (so bundles code that uses CommonJS pattern)
+    - large plugin ecosystem (for minification, linting, transpiling)
+
+2. webpack
+    - bundles more than just JS (eg CSS, images, fonts, HTML)
+    - is smart enough to inline images in styles if they are small enough to justify saving an HTTP request
+    - includes a built in hot-reloading web server
+    - serves files from memory
+    - offers strategic buldle splitting (like for Angular modules)
+
+3. Rollup
+    - tree shaking (reduces bundle size smaller with 20%)
+    - faster loading production code
+    - the drwaback - is quite new (fewer online examples and companion libraries)
+    - better suited for libraries in comparrison with Browserify and webpack which are better suited for applications development
+
+4. JSPM:
+    - uses SystemJS - an universal module loader
+    - can load modules at runtime
+    - has its own package manager
+    - uses Rollup in its builder
+
+Conclusion: `webpack` is the most mature, full-featured and powerful.
+
+#### 5.2. Sourcemaps
+
+Once the code has been bundled it is hard to read when doing debugging wit the browser's developer tools.
+
+The solution is to create `sourcemaps`:
+- maps the code back to original source
+- part of the build
+- they are only downloaded when opening the developer tools
+
+### 6. Linting
+
+A linter programatically enforces consistency and help avoid mistakes:
+- curly brace position
+- trailing commas
+- globals
+- evals
+- extra parenthesis
+- overwriting a function
+- assignment in conditional
+- missing default case in switch
+- debugger / console.log
+
+Options:
+- JSLint (the original and extremely opinionated)
+- JSHint (improvement on JSLint, offers more configurability)
+- ESLint (the most popular linter by far, powerful and configurable)
+
+
+#### 6.1. Configuring ESLint
+
+1. Config Format
+    - a dedicated file
+    - or inside package.json
+    - see: https://eslint.org/docs/user-guide/configuring
+
+2. Which rules?
+    - catches dozens of potential errors out of the box
+    - see: https://eslint.org/docs/rules/
+
+3. Warnings or errors?
+    - you should decide which of your rules produce warnings and which errors
+    -
