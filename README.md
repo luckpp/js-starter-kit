@@ -319,6 +319,8 @@ NOTE: In order to be able to work with multiple Node.js version you can use: `nv
 
 ### 7. Testing and Continuous Integration
 
+#### 7.1. Testing
+
 Important testing styles in JavaScript:
 - Unit: focus on a single function or module and mock out external dependencies
 - Integration: focus on interactions between modules
@@ -365,10 +367,25 @@ In order to start unit testing do the following steps:
 ```javascript
 "scripts": {
     ...
-    "test": "mocha --reporter progress buildScripts/testSetup.js \"buildScripts/**/*.test.js\""
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"buildScripts/**/*.test.js\" \"src/**/*.test.js\""
 }
 ```
 The **test npm script** explained:
 - the reporter settings determines how the test output should display. The `progress` reporter is clean and simple.
 - before running the actual tests the `buildScripts/testSetup.js` will be run
-- next mocha will run any test files (that ends in *.test.js) under **buildScripts** and its sub-directories
+- next mocha will run any test files (that ends in *.test.js) under **buildScripts** and **src** and their sub-directories
+
+##### 7.1.1 Configuring watching
+
+In order to make sure that tests are re-run each time you hit save add the **test-watch npm script**:
+
+```javascript
+"scripts": {
+    "start": "npm-run-all --parallel start-server lint-watch test-watch",
+    ...
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"buildScripts/**/*.test.js\" \"src/**/*.test.js\"",
+    "test-watch": "npm test -- --watch"
+}
+```
+
+#### 7.2. Continuous Integration
