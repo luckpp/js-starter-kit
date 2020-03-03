@@ -505,7 +505,7 @@ In web development, a polyfill is code that implements a feature on web browsers
 In order to request polyfills you can use https://polyfill.io/v3/:
 - in the `index.html` we add a `script` reference to polyfill.io with the desired feature
 ```html
-<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch">
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
 ```
 - than polyfill.io will read the user-agent
     - uses this information to determine if the browser requires a polyfill for the features listed
