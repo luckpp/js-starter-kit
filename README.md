@@ -425,12 +425,46 @@ NOTE:
 
 ##### 7.2.1 Travis CI
 
+In order to use Travis CI follow the steps:
 - go to https://travis-ci.com/
-- sign-in with your github account
-- give access to the desired github repositories
-- in the root of yur project/repository add a **Travis** configuration file called `.travis.yml`:
-```yml
+- sign-in with your Github account
+- give access to the desired Github repositories
+- in the root of your project/repository add a **Travis** configuration file called `.travis.yml`:
+```yaml
 language: node_js
 node_js:
-  - "12"
+  - 12
+```
+
+##### 7.2.1 Travis Appveyor
+
+In order to use Appveyor CI follow the steps:
+- https://www.appveyor.com/
+- sign-in with your Github account
+- give access to the desired Github repositories
+- in the root of your project/repository add a **Appveyor** configuration file called `.appveyor.yml`:
+```yaml
+# Test against this version of Node.js
+environment:
+  matrix:
+  # node.js
+  - nodejs_version: "12"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
 ```
