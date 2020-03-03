@@ -135,7 +135,7 @@ Other options were:
 - Babel (used to transpile the ;atest versions of JS down to ES5) -> at the moment the support for latest JS version added by Chrome, Node.js, Electron is greater than the one offered by Babel
 - Elm (is a purely functional programming language, and is developed with emphasis on usability, performance, and robustness)
 
-To see the ECMAScript compatibility table check: https://kangax.github.io/compat-table/es6/
+To see the ECMAScript compatibility table check: https://kangax.github.io/compat-table/es6/ and also for the browser you can check https://caniuse.com/.
 
 NOTE: I prefere to not use a transpiler since you depend on an additional tool and you can not leverage all the packages which are most likely available sa JS packages.
 
@@ -349,7 +349,7 @@ There are 6 important decisions you need to consider when setting up automated u
     1. in the **Browser**:
         - Karma, Testem (popular test runners)
     2. using an **Headless Browser** (a browser that doesn't have a visible UI)
-        - like ***PhantomJS***
+        - like ***PhantomJS*** (an headless browser)
     3. use an **In-memory DOM**
         - like JSDOM (the lighter-weight alterantive to PhantomJS)
 
@@ -468,3 +468,22 @@ test_script:
 # Don't actually build.
 build: off
 ```
+
+### 8. HTTP
+
+Libraries to handle HTTP calls:
+- Node.js:
+    - `http` (built in package / low level library included in Node.js)
+    - `request` (popular high level library) **-> recommended**
+- Browser:
+    - `XMLHttpRequest` (plain old XML HTTP requests, also known as XHR, the native and original way)
+    - `jQuery` (jQuery's `$.ajax` was used to perform an asynchronous HTTP (Ajax) requests)
+    - `Framework-based` (frameworks like **Angular** include their own HTTP service)
+    - `Fetch` (a standard proposed by the **Web Hypertect Application Technology Working Group** or **What Working Group**, see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) **-> recommended**
+- Node.js and Browser:
+    - `isomorphic-fetch` (https://www.npmjs.com/package/isomorphic-fetch)
+    - `xhr` (https://www.npmjs.com/package/xhr)
+    - `superagent` (full featured library, https://www.npmjs.com/package/superagent)
+    - `axios` (full featured, https://www.npmjs.com/package/axios) **-> recommended**
+
+NOTE: `superagent` and `axios` are popular and elegant but `axios` provides a clean promise based API.
