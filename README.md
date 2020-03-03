@@ -488,7 +488,6 @@ Libraries to handle HTTP calls:
 
 NOTE: `superagent` and `axios` are popular and elegant but `axios` provides a clean promise based API.
 
-
 **Centralize all HTTP calls** since it allows the following benefits:
 - one place to configure all calls; eg:
     - base URL
@@ -498,3 +497,16 @@ NOTE: `superagent` and `axios` are popular and elegant but `axios` provides a cl
     - when asynchronus calls are in progress the user should be notified
 - handle errors
 - single seam for mocking
+
+#### 8.1. Polyfill
+
+In web development, a polyfill is code that implements a feature on web browsers that do not support the feature.
+
+In order to request polyfills you can use https://polyfill.io/v3/:
+- in the `index.html` we add a `script` reference to polyfill.io with the desired feature
+```html
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch">
+```
+- than polyfill.io will read the user-agent
+    - uses this information to determine if the browser requires a polyfill for the features listed
+
