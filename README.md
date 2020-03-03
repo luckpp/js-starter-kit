@@ -487,3 +487,14 @@ Libraries to handle HTTP calls:
     - `axios` (full featured, https://www.npmjs.com/package/axios) **-> recommended**
 
 NOTE: `superagent` and `axios` are popular and elegant but `axios` provides a clean promise based API.
+
+
+**Centralize all HTTP calls** since it allows the following benefits:
+- one place to configure all calls; eg:
+    - base URL
+    - response type
+    - passing credentials
+- handle preloader logic:
+    - when asynchronus calls are in progress the user should be notified
+- handle errors
+- single seam for mocking
