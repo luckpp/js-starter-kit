@@ -648,7 +648,10 @@ fs.writeFile(path.join(dir, 'db.json'), json, function (err) {
 #### 8.2.2. Serve the generated mock data
 
 After generating the mock data you can serve it using **JSON Server**.
-NOTE: **JSON Server** will parse the mock data JSON file and make a mock APU for each top level object it finds.
+
+NOTE: **JSON Server** will do the following:
+- will parse the mock data JSON file and make a mock API for each top level object it finds.
+- any HTTP operations will done against the **JSON Server** will reflect in the JSON file (which will be updated).
 
 1. Install `json-server`:
     - run `npm i json-server --save-dev`
@@ -677,3 +680,4 @@ NOTE: **JSON Server** will parse the mock data JSON file and make a mock APU for
 }
 ```
 NOTE: `prestart-mockapi` will be automatically run by npm run each time before `start-mockapi` since it respects the naming convention of the **npm scripts** and has the `pre` prefix in its name.
+

@@ -1,22 +1,3 @@
 {
-  "users": [
-    {
-      "id": 72639500.50532904,
-      "firstName": "Oscar",
-      "lastName": "Neal",
-      "email": "jeg@zevlice.ug"
-    },
-    {
-      "id": 72643171.21275803,
-      "firstName": "Isaiah",
-      "lastName": "Morita",
-      "email": "pifavu@ciogo.mh"
-    },
-    {
-      "id": 63230693.574240305,
-      "firstName": "Rachel",
-      "lastName": "Dominguez",
-      "email": "jocvojka@sulir.md"
-    }
-  ]
+  "users": []
 }
