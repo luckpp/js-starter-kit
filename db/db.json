@@ -1,3 +1,28 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": 12778036.377536576,
+      "firstName": "Andre",
+      "lastName": "Milani",
+      "email": "puciwwa@jonog.ba"
+    },
+    {
+      "id": 63072805.78352334,
+      "firstName": "Robert",
+      "lastName": "Chevalier",
+      "email": "vufru@renkakvo.gy"
+    },
+    {
+      "id": 47612326.275032535,
+      "firstName": "Ollie",
+      "lastName": "van Vliet",
+      "email": "sanzo@radma.sh"
+    },
+    {
+      "id": 62827579.03514399,
+      "firstName": "Elijah",
+      "lastName": "Tamura",
+      "email": "sus@epone.mg"
+    }
+  ]
 }

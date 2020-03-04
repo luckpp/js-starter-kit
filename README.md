@@ -518,10 +518,9 @@ It is useful in the following situations:
 - avoid inter-team bottlenecks
 - work offline
 
-
 Mocking tools:
 - Nock
-    - useful whe writing unit tests
+    - **useful whe writing unit tests**
     - https://www.npmjs.com/package/nock
 - static JSON
     - this can be done manually if you have centralized all API calls -> in a central place just point to a static JSON file
@@ -680,4 +679,30 @@ NOTE: **JSON Server** will do the following:
 }
 ```
 NOTE: `prestart-mockapi` will be automatically run by npm run each time before `start-mockapi` since it respects the naming convention of the **npm scripts** and has the `pre` prefix in its name.
+
+
+## 9. Project structure
+
+**A demo app should be considered a critical piece of the team starter kit.**
+
+A demo app gives examples of:
+- directory structure and file naming
+- framework usage
+- testing
+- mock API
+- automated deployment
+
+A demo app codifies decisions:
+- it gives you a single place to codify your decisions
+- the demo app should reflect your coding standards
+- it's a place to update as you learn new techniques and patterns that you want to share with the team
+
+A demo app offers an interactive example of the starter kit working in a realistic scenario:
+- this helps new team members understand what life is like working in the selected stack
+
+Tips:
+- JS belongs to a .js file (not inside `script` HTML tags!)
+- avoid dynamically generating JavaScript logic, dynamically generate JSON data instead that JavaScript code can use
+
+
 
