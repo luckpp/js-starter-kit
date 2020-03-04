@@ -1,10 +1,8 @@
 # JavaScript Starter Kit
 
-Starter kit that includes all tools required by a JS project.
+Starter kit that includes tools and steps required when starting a new project required by a JS project.
 
-## Steps required when starting a new project
-
-### 1. Choose an IDE
+## 1. Choose an IDE
 
 Visual Studio Code is my choice since it has the following features:
 - free
@@ -22,7 +20,7 @@ It is important to define the same configuration for the IDE that can be shared 
 
 NOTE: An alternative way to add an editor config is using an .editorconfig file added to the root of the project (more info can be found at https://editorconfig.org/)
 
-### 2. Choose the Package Manager
+## 2. Choose the Package Manager
 
 `npm` is the most popular Package Manager for JavaScript and is becoming the defacto standard.
 `npm` is installed along with Node.js.
@@ -33,7 +31,7 @@ NOTE:
 
 *** in the current project use the packages from: https://gist.github.com/coryhouse/29bd1029b623beb4c7f79b748dcba844
 
-### 3. Choose a Web Server
+## 3. Choose a Web Server
 
 `express` is the web application framework for Node.js that can be used both in in development and in production.
 
@@ -43,7 +41,7 @@ Alternatives for `express` that can be used only in development are:
 - `Browsersync` (dedicated IP for sharing work on LAN, all interactions remain in sync -> you can hit the same IP on multiple devices and all devices will remain in sync, great for cross-device testing, integrates with Webpack/Browserify/Gulp/Express)
 
 
-#### 3.1 Share the work-in-progress
+### 3.1 Share the work-in-progress
 
 In order to share the work-in-progress there are several alternatives
 1. Classical cloud providers: Google, AWS, Azure
@@ -72,7 +70,7 @@ In order to share the work-in-progress there are several alternatives
 
 NOTE: I prefere to use `localtunnel` due to easy setup.
 
-### 4. Automation
+## 4. Automation
 
 The most popular options for JavaScript automation are:
 1. Grunt
@@ -107,7 +105,7 @@ The benefits of `npm scripts`:
 
 NOTE: Packages called from npm scripts do not need to be installed globally.
 
-#### 4.1. Run scripts in parallel
+### 4.1. Run scripts in parallel
 
 Use npm package `npm-run-all` (https://www.npmjs.com/package/npm-run-all).
 Update the scripts section of the `package.json`:
@@ -124,7 +122,7 @@ Update the scripts section of the `package.json`:
 
 NOTE: To suppress the noise made by `npm start` use `npm start -s`
 
-### 4. Transpiling
+## 4. Transpiling
 
 Transpiler is a type of translator that takes the source code of a program written in a programming language as its input and produces an equivalent source code in the same or a different programming language.
 
@@ -140,7 +138,7 @@ To see the ECMAScript compatibility table check: https://kangax.github.io/compat
 NOTE: I prefere to not use a transpiler since you depend on an additional tool and you can not leverage all the packages which are most likely available sa JS packages.
 
 
-### 5. Bundling
+## 5. Bundling
 
 JavaScript code needs to be bundled up for usage.
 
@@ -152,7 +150,7 @@ NOTE: **bundlers are not just for apps that run into the browser -> one can use 
 - **package any JavaScript code into a single file**
 - **strategically bundle JavaScript code into separate files for different parts of the app (eg the app has 5 pages => create a bundle for each page)**
 
-#### 5.1. Modules format
+### 5.1. Modules format
 
 In the present there 2 formats for defining a module:
 - CommonJS: `const jQuery = require('jQuery')`
@@ -199,7 +197,7 @@ Bundlers:
 
 Conclusion: `webpack` is the most mature, full-featured and powerful.
 
-#### 5.2. Sourcemaps
+### 5.2. Sourcemaps
 
 Once the code has been bundled it is hard to read when doing debugging wit the browser's developer tools.
 
@@ -208,7 +206,7 @@ The solution is to create `sourcemaps`:
 - part of the build
 - they are only downloaded when opening the developer tools
 
-### 6. Linting
+## 6. Linting
 
 A linter programatically enforces consistency and help avoid mistakes:
 - curly brace position
@@ -226,7 +224,7 @@ Options:
 - JSHint (improvement on JSLint, offers more configurability)
 - ESLint (the most popular linter by far, powerful and configurable)
 
-#### 6.1. Configuring ESLint
+### 6.1. Configuring ESLint
 
 1. Config Format
     - a dedicated file
@@ -288,7 +286,7 @@ In order to displable a linting rule (like for example the `no-console` rule) ju
 - add on the line for which want to disable the linting the following comment: `// eslint-disable-line no-console`
 
 
-#### 6.2. Configuring eslint-watch
+### 6.2. Configuring eslint-watch
 
 `eslint-watch` does not wathc our files by default. We have the option to add another `npm script` to our `package.json` file:
 
@@ -317,9 +315,9 @@ NOTE: In order to make `eslint` run every time we start our application just upd
 NOTE: In order to be able to work with multiple Node.js version you can use: `nvm` (https://github.com/coreybutler/nvm-windows).
 
 
-### 7. Testing and Continuous Integration
+## 7. Testing and Continuous Integration
 
-#### 7.1. Testing
+### 7.1. Testing
 
 Important testing styles in JavaScript:
 - Unit: focus on a single function or module and mock out external dependencies
@@ -375,7 +373,7 @@ The **test npm script** explained:
 - before running the actual tests the `buildScripts/testSetup.js` will be run
 - next mocha will run any test files (that ends in *.test.js) under **buildScripts** and **src** and their sub-directories
 
-##### 7.1.1 Configuring watching
+#### 7.1.1 Configuring watching
 
 In order to make sure that tests are re-run each time you hit save add the **test-watch npm script**:
 
@@ -388,7 +386,7 @@ In order to make sure that tests are re-run each time you hit save add the **tes
 }
 ```
 
-#### 7.2. Continuous Integration
+### 7.2. Continuous Integration
 
 When your team commits code, it is important to confirm immediately that the commit works as expected on another machine (this is the resposibiliry of the Continuous Integration Server - CI Server).
 
@@ -423,7 +421,7 @@ NOTE:
 - Appveyor is notable because of its Windows support
 
 
-##### 7.2.1 Travis CI
+#### 7.2.1 Travis CI
 
 In order to use Travis CI follow the steps:
 - go to https://travis-ci.com/
@@ -436,7 +434,7 @@ node_js:
   - 12
 ```
 
-##### 7.2.1 Travis Appveyor
+#### 7.2.1 Travis Appveyor
 
 In order to use Appveyor CI follow the steps:
 - https://www.appveyor.com/
@@ -469,7 +467,7 @@ test_script:
 build: off
 ```
 
-### 8. HTTP
+## 8. HTTP
 
 Libraries to handle HTTP calls:
 - Node.js:
@@ -498,7 +496,7 @@ NOTE: `superagent` and `axios` are popular and elegant but `axios` provides a cl
 - handle errors
 - single seam for mocking
 
-#### 8.1. Polyfill
+### 8.1. Polyfill
 
 In web development, a polyfill is code that implements a feature on web browsers that do not support the feature.
 
@@ -509,4 +507,49 @@ In order to request polyfills you can use https://polyfill.io/v3/:
 ```
 - than polyfill.io will read the user-agent
     - uses this information to determine if the browser requires a polyfill for the features listed
+
+### 8.2. Moking API
+
+It is useful in the following situations:
+- when unit testing
+- when HTTP calls require an instant response
+- to keep working when services are down
+- for rapid prototyping
+- avoid inter-team bottlenecks
+- work offline
+
+
+Mocking tools:
+- Nock
+    - useful whe writing unit tests
+    - https://www.npmjs.com/package/nock
+- static JSON
+    - this can be done manually if you have centralized all API calls -> in a central place just point to a static JSON file
+- create a development web server using
+    - **JSON Server**
+        - create a fake DB using static JSON
+        - when starting JSON Server it creates a web service that works with the static JSON
+        - POST/PUT/DELETE calls actually update the static JSON file
+        - https://www.npmjs.com/package/json-server
+    - **JSON Schema Faker**
+        - generates JSON fake data
+        - https://www.npmjs.com/package/json-schema-faker
+        - more docs on: https://json-schema-faker.js.org/
+    - or just create a fake API using:
+        - Browsersync
+        - Express
+
+The plan for moking HTTP:
+1. Declare our schema using **JSON Schema Faker**
+2. Generate random data using for example:
+    - **chance.js** (https://www.npmjs.com/package/chance)
+    - **randexo.js** (https://www.npmjs.com/package/randexp)
+3. Serve data via API using **JSON Server**
+
+NOTE: the JSON data format is decribed by several standards:
+- **JSON Schema** (http://json-schema.org/)
+- JSON Content Rules
+- JSON LD
+- RAML
+- API related technologies like: GraphQL, Falcor, OData
 
