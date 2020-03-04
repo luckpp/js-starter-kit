@@ -3,8 +3,8 @@ const schema = {
     'properties': {
         'users': {
             'type': 'array',
-            'minItems': 30,
-            'maxItems': 50,
+            'minItems': 3,
+            'maxItems': 5,
             'items': {
                 'type': 'object',
                 'properties': {

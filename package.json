@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "prestart": "node ./buildScripts/startMessage.js",
-        "start": "npm-run-all --parallel start-server lint-watch test-watch",
+        "start": "npm-run-all --parallel start-server lint-watch test-watch start-mockapi",
         "start-server": "node ./buildScripts/srcServer.js",
         "share": "npm-run-all start-server localtunnel",
         "localtunnel": "lt --port 3000",
@@ -13,7 +13,9 @@
         "lint-watch": "npm run lint -- --watch",
         "test": "mocha --reporter progress buildScripts/testSetup.js \"buildScripts/**/*.test.js\" \"src/**/*.test.js\"",
         "test-watch": "npm test -- --watch",
-        "generate-mock-data": "node buildScripts/generateMockData.js"
+        "generate-mock-data": "node buildScripts/generateMockData.js",
+        "prestart-mockapi": "npm run generate-mock-data",
+        "start-mockapi": "json-server --watch db/db.json --port 3001"
     },
     "repository": {
         "type": "git",
@@ -38,6 +40,7 @@
         "eslint-watch": "^6.0.1",
         "jsdom": "^16.2.0",
         "json-schema-faker": "^0.5.0-rc23",
+        "json-server": "^0.16.1",
         "localtunnel": "^2.0.0",
         "mocha": "^7.1.0",
         "npm-run-all": "^4.1.5"

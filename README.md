@@ -637,6 +637,43 @@ fs.writeFile(path.join(dir, 'db.json'), json, function (err) {
 
 ```
 
-3. Update the `npm scripts` with a new script:
+3. Update the `npm scripts` with a new script to generate the mock data:
+```javascript
+"scripts": {
+    ...
+    "generate-mock-data": "node buildScripts/generateMockData.js"
+}
+```
 
+#### 8.2.2. Serve the generated mock data
 
+After generating the mock data you can serve it using **JSON Server**.
+NOTE: **JSON Server** will parse the mock data JSON file and make a mock APU for each top level object it finds.
+
+1. Install `json-server`:
+    - run `npm i json-server --save-dev`
+
+2. Add a new npm script to start the mock API server.
+```javascript
+"scripts": {
+    ...
+    "start-mockapi": "json-server --watch db/db.json --port 3001"
+}
+```
+
+3. Add an npm script to generate data each time the app starts. This step is important since randomized data helps simulate the real world and it catches issues in development:
+    - empty lists
+    - long lists
+    - long values
+    - provides data for testing, filtering, sorting
+
+```javascript
+"scripts": {
+    "start": "npm-run-all --parallel start-server lint-watch test-watch start-mockapi",
+    ...
+    "generate-mock-data": "node buildScripts/generateMockData.js",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch db/db.json --port 3001"
+}
+```
+NOTE: `prestart-mockapi` will be automatically run by npm run each time before `start-mockapi` since it respects the naming convention of the **npm scripts** and has the `pre` prefix in its name.
