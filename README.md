@@ -533,6 +533,7 @@ Mocking tools:
         - https://www.npmjs.com/package/json-server
     - **JSON Schema Faker**
         - generates JSON fake data
+        - works well with (**chance.js**, **faker.js** or **randexo.js**)
         - https://www.npmjs.com/package/json-schema-faker
         - more docs on: https://json-schema-faker.js.org/
     - or just create a fake API using:
@@ -543,6 +544,7 @@ The plan for moking HTTP:
 1. Declare our schema using **JSON Schema Faker**
 2. Generate random data using for example:
     - **chance.js** (https://www.npmjs.com/package/chance)
+    - **faker.js** (https://github.com/marak/Faker.js/)
     - **randexo.js** (https://www.npmjs.com/package/randexp)
 3. Serve data via API using **JSON Server**
 
@@ -552,4 +554,89 @@ NOTE: the JSON data format is decribed by several standards:
 - JSON LD
 - RAML
 - API related technologies like: GraphQL, Falcor, OData
+
+#### 8.2.1. Generate mock data
+
+Steps required to mock HTTP requests:
+
+1. Write the schema that declares the shape of our mock data
+
+    - add the following file `./buildScripts/mockDataSchema.js`:
+
+```javascript
+const schema = { // describes the shape of our mock JSON
+    'type': 'object', // the datastructure is an object
+    'properties': { // that object has a set of properties
+        'users': { // the first property is 'users'
+            'type': 'array', // that has a type of array
+            'minItems': 3, // the array contains between
+            'maxItems': 5, // 3 and 5 items
+            'items': { // and define the shape of the items that should sit inside the 'users' array
+                'type': 'object', // so inside the array we should find objects
+                'properties': { // with the following properties
+                    'id': {
+                        'type': 'number', // 'id' should be a number
+                        'unique': true, // should be unique to mimic a PrimaryKey in a DB
+                        'minimum': 1 // and should be positive greater than 0
+                    },
+                    'firstName': {
+                        'type': 'string', // 'firstName' should be a string
+                        'chance': 'first' // and asking chance.js to geenerate a first name
+                    },
+                    'lastName': {
+                        'type': 'string', // 'lastName' should be a string
+                        'chance': 'last' // and asking chance.js to geenerate a last name
+                    },
+                    'email': {
+                        'type': 'string', // 'email' should be a string
+                        'chance': 'email' // and asking chance.js to geenerate a email
+                    }
+                },
+                'required': ['id', 'firstName', 'lastName', 'email'] // all the 4 properties are required and will allways be populated
+            }
+        }
+    },
+    'required': ['users'] // also the top level property 'users' is required
+};
+
+module.exports.schema = schema;
+```
+
+2. Use the `json-schema-faker` to generate some mock using this schema
+
+    - NOTE: check info here https://github.com/json-schema-faker/json-schema-faker/blob/master/docs/USAGE.md
+
+    - run `npm i json-schema-faker --save-dev`
+    - run `npm i chance --save-dev`
+
+    - add the following file `./buildScripts/generateMockData.js`:
+```javascript
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+const Chance = require('chance');
+const jsf = require('json-schema-faker');
+const { schema } = require('./mockDataSchema');
+
+jsf.extend('chance', () => new Chance());
+
+const json = JSON.stringify(jsf.generate(schema), null, 2);
+
+const dir = './db';
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+}
+
+fs.writeFile(path.join(dir, 'db.json'), json, function (err) {
+    if (err) {
+        console.log(chalk.red(err));
+    } else {
+        console.log(chalk.green('Mock data generated.'));
+    }
+});
+
+```
+
+3. Update the `npm scripts` with a new script:
+
 
