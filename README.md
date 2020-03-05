@@ -29,8 +29,6 @@ NOTE:
 - in order to manage multiple version of Node.js one can use the `nvm` tool (Node Version Manager).
 - the 'npm' has buil in  security scanning; one should use the following commands: `npm audit` and `npm audit fix`
 
-*** in the current project use the packages from: https://gist.github.com/coryhouse/29bd1029b623beb4c7f79b748dcba844
-
 ## 3. Choose a Web Server
 
 `express` is the web application framework for Node.js that can be used both in in development and in production.
