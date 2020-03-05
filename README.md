@@ -122,6 +122,14 @@ Update the scripts section of the `package.json`:
 
 NOTE: To suppress the noise made by `npm start` use `npm start -s`
 
+NOTE: There is another way to run the `npm scripts` either sequential or parallel:
+```
+$ npm run pre-build && npm run build-logic && npm run post-build && npm run exit
+```
+- use **&&** (double ampersand) for sequential execution
+- use **&** (single ampersand) for parallel execution
+
+
 ## 4. Transpiling
 
 Transpiler is a type of translator that takes the source code of a program written in a programming language as its input and produces an equivalent source code in the same or a different programming language.
@@ -710,3 +718,58 @@ Tips:
     - eg: if you are working in React, much of your logic should exist outside the React components
 
 NOTE: for the demo app select a domain that is related to your business.
+
+## 10. Production build
+
+Steps for creating a production build:
+
+1. Minification
+    - speeds page load
+    - saves bandwidth
+    - the minifier:
+        - shortens variable and function names
+        - removes comments
+        - removes whitespace and new lines
+        - some of the new bundlers like RollUp and Webpack2 do dead code elimination via tree-shaking
+        - debug via sourcemap
+
+2. Add gzip copmression for staticaly served files:
+- `npm i compression`
+- see more info on https://www.npmjs.com/package/compression
+
+```javascript
+const express = require('express');
+const compression = require('compression');
+
+const app = express();
+app.use(compression()); // call before the subsequent call to express.static(...)
+app.use(express.static('dist'));
+```
+
+### 10.1. Automate the production build
+
+- install `rimraf` package: `npm i rimraf --save-dev`
+
+- add the following `npm scripts`:
+
+```javascript
+"scripts": {
+    ...
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "node buildScripts/build.js",
+    "postbuild": "node buildScripts/distServer.js"
+}
+```
+
+- `npm run build`
+
+### 10.2. Topics to consider
+
+NOTE: many of the topics below are handled out of the box by frameworks like **Angular**.
+
+- automatic index.html generation and **cache busting**:
+    - use `html-webpack-plugin` (https://www.npmjs.com/package/html-webpack-plugin)
+- use bundle splitting:
+    - speed initial page load
+    - avoid re-downloading all libraries (eg. **Angular** bundles libraries like **lodash** in a separate vendor `.js` file that's cached separately)
