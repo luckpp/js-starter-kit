@@ -702,7 +702,11 @@ A demo app offers an interactive example of the starter kit working in a realist
 
 Tips:
 - JS belongs to a .js file (not inside `script` HTML tags!)
-- avoid dynamically generating JavaScript logic, dynamically generate JSON data instead that JavaScript code can use
+    - avoid dynamically generating JavaScript logic, dynamically generate JSON data instead that JavaScript code can use
+- organize the code by feature instead of by file type
+- extract logic into 'POJOs' (plain old JavaScript objects)
+    - POJOs should contain plain logic, that isn't tied to any framework
+    - **when  structuring your application, strive to place as much logic as possible in JavaScript
+    - eg: if you are working in React, much of your logic should exist outside the React components
 
-
-
+NOTE: for the demo app select a domain that is related to your business.
