@@ -821,4 +821,4 @@ Use `Track.js` for adding error logging:
         - EJS (https://ejs.co/) - **recommended**
         - Jade (http://jade-lang.com/)
         - Underscore (https://underscorejs.org/)
-        - Handlebars (ttps://handlebarsjs.com/)
+        - Handlebars (https://handlebarsjs.com/)
