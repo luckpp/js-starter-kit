@@ -762,12 +762,54 @@ app.use(express.static('dist'));
 
 - `npm run build`
 
-### 10.2. Topics to consider
+### 10.2. Topics to consider when building a Node.js app
 
 NOTE: many of the topics below are handled out of the box by frameworks like **Angular**.
 
-- automatic index.html generation and **cache busting**:
-    - use `html-webpack-plugin` (https://www.npmjs.com/package/html-webpack-plugin)
-- use bundle splitting:
-    - speed initial page load
-    - avoid re-downloading all libraries (eg. **Angular** bundles libraries like **lodash** in a separate vendor `.js` file that's cached separately)
+Topics:
+
+#### 10.2.1. Automatic index.html generation and **cache busting
+
+- use `html-webpack-plugin` (https://www.npmjs.com/package/html-webpack-plugin)
+
+#### 10.2.2. Use bundle splitting
+
+- speed initial page load
+- avoid re-downloading all libraries (eg. **Angular** bundles libraries like **lodash** in a separate **vendor.js** file that's cached separately)
+
+#### 10.2.3. Cache busing
+
+- to save bandwidth and avoid unnecessary HTTP requests, you can consider configuring your production web server so that your JavaScript bundle doesn't expire for up to a year
+- saves HTTP requests (as long as you know that you can bust cache, you can set headers that tell your users browsers not to request your assets for up to a year - this means that after someone your JavaScript file, they won't make another HTTP request for that file up to one year)
+- when it's time to deploy an update to your app, you can assure that user immediately receives the new bundle by generating a new file name for that bundle (you can force a request fot the latest version)
+- how it is done: hash the bundle filename (it the code inside thebundle stays the same, the hash/filename stays the same) + generate HTML dynamically
+
+**NOTE:  Have a look on how to accomplish setting `far future headers`on your web server. The ideea is to configure your web server to send headers that specify that your application JavaScript files shouldn't expire until some date in the distant future**
+
+#### 10.2.4. Extract and minify CSS
+
+- minify and place all your CSS into a separate bundle
+
+#### 10.2.5. Production error logging
+
+In order to be aware of when your application throws a JavaScript error in production you can use a long list of services:
+- TrackJS (https://trackjs.com/) - specific to JS - **recommended**
+- Sentry (https://sentry.io/for/javascript/)
+- New Relic (https://newrelic.com/)
+- Raygun (https://raygun.com/)
+
+When yoou're evaluating error logging services, here are some key concerns to consider:
+- does provide good **error metadata**
+    - does it tell me what **browser** the error occured in
+    - does it captures **stack trace**
+    - does it captures **previous actions** that the user was performing so I can reporduce the issue
+    - does it offer a **custom API for enhanced tracking**
+- does it offer **notifications & integrations**
+    - so you can receive e-mails when error occur
+    - and integrat it with other popular platforms like `Slack` (https://slack.com/) so we are notified there instead of e-mail
+- does it offer **analytics and filtering**:
+    - so you can filter out the noise by aggregating errors, filtering the list and setting rules for when you should be notified using specific tresholds
+- **pricing**:
+    - you will end up paying by the month
+
+**RECOMMENDATION: Do not try to solve this issues yourself. Doing JavaScript error logging well is a much harder problem than you think, because errors are very hard to reproduce and fix without the rich metadata and filtering that these tools provide.**
