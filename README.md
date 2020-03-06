@@ -813,3 +813,12 @@ When yoou're evaluating error logging services, here are some key concerns to co
     - you will end up paying by the month
 
 **RECOMMENDATION: Do not try to solve this issues yourself. Doing JavaScript error logging well is a much harder problem than you think, because errors are very hard to reproduce and fix without the rich metadata and filtering that these tools provide.**
+
+Use `Track.js` for adding error logging:
+- `Track.js` requires you to add a reference to it inside the `index.html`
+- the `index.html` should reference `Track.js` only in production
+    - to accomplish conditionally add the reference using a templating engine like:
+        - EJS (https://ejs.co/) - **recommended**
+        - Jade (http://jade-lang.com/)
+        - Underscore (https://underscorejs.org/)
+        - Handlebars (ttps://handlebarsjs.com/)
