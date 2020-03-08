@@ -871,13 +871,13 @@ For the current demo the following services will be used:
     - simple to set up
     - it is focused solely on serving static files
 
-Deployment to **Heroku** (https://heroku.com/)
+#### 11.2.1. Deployment to **Heroku** https://heroku.com/
 - create an Heroku account
 - from the account create an Heroku app and bind it to the GitHub repository
 - each time a check-in occurs in GitHub, an automatic build will be triggered on Heroku and the app will be updated
 - for more info see https://github.com/luckpp/js-starter-kit-api
 
-Deployment to **Surge** (https://surge.sh/)
+#### 11.2.2. Deployment to **Surge** https://surge.sh/
 - the process to set up for the fron-end should be:
     - `npm start`
     - `npm run build`
@@ -898,3 +898,62 @@ Deployment to **Surge** (https://surge.sh/)
 }
 ```
 - for more info see https://github.com/luckpp/js-starter-kit-ui
+
+### 11.3. Starter kit update approaces
+
+Once you have created your team's starter kit and implemented several projects using this starter kit, it is important to keep those projects updated over time, as you enhance your starter kit.
+
+Exmaple:
+- in Quarter 1 (Q1): create your starter kit
+- in Quarter 2 (Q2): create project A (based on starter kit)
+- in Quarter 3 (Q3): create project B (based on starter kit)
+- in Quarter 4 (Q4): you learned some lessons, upgrade some libraries, and add enhancements and bug fixes to your starter kit
+
+=> Question: how easey is to add those enhancements into product A and B:
+- simply manually update them
+- use automated approaches:
+    1. `Yeoman` (https://yeoman.io/)
+    2. `GitHub`
+    3. `npm`
+
+#### 11.3.1 Yeoman
+
+- it is a scaffolding tool for starting new projects
+- once you are happy with your development environment you can create a **Yeoman** generator (this makes easy for people to create a project by typing `yo` and the name of your generators)
+- Yeoman also hosts a long lists of generators
+
+After createing a Yeoman generator for your development environment, there is a 3 sptep process to update an existing project later:
+- commit all your code to your source control system
+- scaffold over the existing project
+    - Yeoman will promt for each file that is being overwritten
+- resolve the conflicts manually
+
+For more info see https://app.pluralsight.com/library/courses/yeoman-fundamentals/table-of-contents/.
+
+#### 11.3.2 GitHub
+
+- you begin by hosting your project on GitHub
+- fork the **starter kit**  for a new project
+- pull changes from **master** as the **starter kit** is enhanced over time
+
+#### 11.3.3 npm
+
+- wrap your **starter kit** in an npm package
+    - in this way you abstract away the configuration and build scripts behind an npm package
+- update the npm package to receive the latest changes
+
+Advantages:
+- abstracts away the complexity
+- it is the simplest update since you do not need to resolve conflicts
+- great when you want to enforce that all projects use the exact same config
+
+Disadvantages
+- you are restricted to teawaking anything inside the npm package for a given project
+- is overly restrictive
+
+NOTE:
+- this approach is becoming more popular and it does not require so much work as maintaing a Yeoman generator
+- it allows an hybrid approach:
+    - **centralize** everything that makes sense (like `.eslintrc`) inside an npm package
+    - **decentralize** in each specific project what is custom (like `package.json`)
+
