@@ -846,4 +846,27 @@ It is important to keep the UI and API code in complete separate projects. The b
     - a CDN handles caching and scalability
     - a CDN is especially useful for high traffic sites and applications that are used arround the world since CDNs intelligently serve assets from the closest physical server, to speed downloads.
 
-5. Use the API tech you like (C#, Java, Ruby)
+5. Use the API tech you like (C#, Java, Ruby, ...)
+
+### 11.2. Cloud hosting
+
+Virtually any cloud host can serve a JavaScript app these days with minimum configuration.
+
+Popular cloud providers include:
+- Amazon Web Services
+- Microsoft Azure
+- Heroku
+- Firebase
+- Google Cloud Platform
+- Netlify (focused solely on serving static files)
+- GitHub Pages (focused solely on serving static files)
+- Surge https://surge.sh/ (focused solely on serving static files)
+
+For the current demo the following services will be used:
+- **Heroku** for API:
+    - popular
+    - powerful
+    - has an elegant automated deployment process
+- **Surge** for the UI:
+    - simple to set up
+    - it is focused solely on serving static files
