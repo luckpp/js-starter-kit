@@ -957,7 +957,7 @@ NOTE:
     - **centralize** everything that makes sense (like `.eslintrc`) inside an npm package
     - **decentralize** in each specific project what is custom (like `package.json`)
 
-### 11.3. Challenge
+### 11.4. Challenge
 
 When starting a new project **just send a meeting invitation to your team**, beacause the first steep into establishing a **starter kit** is to start a conversation.
 
