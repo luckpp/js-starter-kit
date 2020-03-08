@@ -870,3 +870,31 @@ For the current demo the following services will be used:
 - **Surge** for the UI:
     - simple to set up
     - it is focused solely on serving static files
+
+Deployment to **Heroku** (https://heroku.com/)
+- create an Heroku account
+- from the account create an Heroku app and bind it to the GitHub repository
+- each time a check-in occurs in GitHub, an automatic build will be triggered on Heroku and the app will be updated
+- for more info see https://github.com/luckpp/js-starter-kit-api
+
+Deployment to **Surge** (https://surge.sh/)
+- the process to set up for the fron-end should be:
+    - `npm start`
+    - `npm run build`
+    - `npm run deploy`
+- first install surge npm package:
+    - `npm i surge --save-dev`
+- edit the `package.json` to add the steps for the process:
+```javascript
+"scripts": {
+    ...
+    "start": "ng serve -o",
+    "build": "ng build --prod",
+    "deploy": "surge --domain js-starter-kit-ui.surge.sh  ./dist/js-starter-kit-ui",
+},
+"devDependencies": {
+    ...
+    "surge": "^0.21.3"
+}
+```
+- for more info see https://github.com/luckpp/js-starter-kit-ui
