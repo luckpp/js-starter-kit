@@ -822,3 +822,28 @@ Use `Track.js` for adding error logging:
         - Jade (http://jade-lang.com/)
         - Underscore (https://underscorejs.org/)
         - Handlebars (https://handlebarsjs.com/)
+
+## 11. Production deploy
+
+### 11.1. Separte UI and API code
+
+It is important to keep the UI and API code in complete separate projects. The benefits are:
+
+1. Simple, low-risk, UI only deploys:
+    - a static front-end is easy to deploy
+    - you just need to upload the files generated in the `dist` folder to a public web server
+    - you do not have to wory about regressing the service layer
+
+2. Separates concerns:
+    - separate teams for the front-end and for the back-end
+    - less to understand
+    - scale the back-end separately (the traffic for the UI may differ from the traffic for the API)
+
+3. Cheap UI hosting
+    - when your front-end is just static HTML, JavaScript and CSS you can select any host in the world
+
+4. Serve UI via a content delivery network (CDN):
+    - a CDN handles caching and scalability
+    - a CDN is especially useful for high traffic sites and applications that are used arround the world since CDNs intelligently serve assets from the closest physical server, to speed downloads.
+
+5. Use the API tech you like (C#, Java, Ruby)
