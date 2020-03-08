@@ -162,7 +162,7 @@ In the present there 2 formats for defining a module:
 - CommonJS: `const jQuery = require('jQuery')`
 - ES6 Module: `import jQuery from 'jQuery'` -> a standard based way of encapsulating the code (more details for Node.js on https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)
 
-Beneffits of of ES6 Modules:
+Benefits of of ES6 Modules:
 - standardized
 - staically analyzable
     - imporoved autocomplete
@@ -899,7 +899,7 @@ For the current demo the following services will be used:
 ```
 - for more info see https://github.com/luckpp/js-starter-kit-ui
 
-### 11.3. Starter kit update approaces
+### 11.3. Starter kit update approaches
 
 Once you have created your team's starter kit and implemented several projects using this starter kit, it is important to keep those projects updated over time, as you enhance your starter kit.
 
@@ -957,3 +957,20 @@ NOTE:
     - **centralize** everything that makes sense (like `.eslintrc`) inside an npm package
     - **decentralize** in each specific project what is custom (like `package.json`)
 
+### 11.3. Challenge
+
+When starting a new project **just send a meeting invitation to your team**, beacause the first steep into establishing a **starter kit** is to start a conversation.
+
+In this meeting you should answer some questions:
+1. Would you benefit from a starter kit?
+2. What are the JavaScript pain points?
+    - testing
+    - broken builds
+    - time consuming, manual or faulty deployments
+    - inconsistent coding styles
+3. Would we benefit from a demo app?
+    - are people joining our team clear about how we operate
+    - do they understand our oppinions on directory structures, file naming, API calls ...
+    - a demo app clearly conveys many of these decisions
+
+The questins above should help provide your team with a clear vision on how to move forward.
